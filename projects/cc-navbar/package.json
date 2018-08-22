@@ -1,9 +1,30 @@
 {
-  "name": "@govce/cc-navbar",
-  "version": "0.0.1",
+  "name": "@govce/cc-navbar",  
+  "author": "Pedro Henrique <gpedroemail@gmail.com>",
+  "version": "0.0.2",
+  "description": "Componente de Navbar para Angular utilizando o Angular Material e com foco nos sistemas organizacionais.",
+  "homepage": "https://github.com/casacivilce/cc-navbar#readme",
+  "license": "GPL-3.0",
+  "keywords": [
+    "angular",
+    "material",
+    "navbar",
+    "sidenav",
+    "toolbar",
+    "dynamic",
+    "casa civil ceará",
+    "governo do estado do ceará"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/casacivilce/cc-navbar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/casacivilce/cc-navbar/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "@govce/cc-material-themes": "^0.0.1"
+    "@govce/cc-material-themes": "^0.0.2"
   }
 }
