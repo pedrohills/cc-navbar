@@ -37,7 +37,7 @@ Adicione no seu arquivo style.scss:
 Adicione no seu arquivo app.module.ts:
 
 ```ts
-import { CcNavbarModule } from '@casacivilce/cc-navbar';
+import { CcNavbarModule } from '@govce/cc-navbar';
 
 @NgModule({
     declarations: [...],
