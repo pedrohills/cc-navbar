@@ -1,4 +1,4 @@
-# ![Logotipo da Casa Civil] (https://raw.githubusercontent.com/casacivilce/cc-navbar/master/common/images/logotipo-horizontal-casa-civil-full-cores-gradiente.png)
+# ![Logotipo da Casa Civil](https://raw.githubusercontent.com/casacivilce/cc-navbar/master/common/images/logotipo-horizontal-casa-civil-full-cores-gradiente.png)
 
 # CC-NAVBAR
 
