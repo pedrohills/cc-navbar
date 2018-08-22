@@ -1,0 +1,98 @@
+<!-- CC Navbar -->
+<mat-sidenav-container fullscreen class="cc-navbar">
+    <!-- Conteúdo da sidebar -->
+    <mat-sidenav class="mat-elevation-z2" #sidenav mode="side" [autoFocus]="false" [opened]="sidenavService.isOpen">
+
+        <!-- Logotipo a ser mostrado com divider abaixo -->
+        <a routerLink="/">
+            <img class="logotipo" [src]="logotipo.src" [alt]="logotipo.alt" mat-card-image>
+        </a><!-- End Logotipo a ser mostrado com divider abaixo -->
+        <!-- Divider abaixo do logotipo -->
+        <mat-divider></mat-divider><!-- End Divider abaixo do logotipo -->
+
+        <!-- Iteração nos itens do menu para montagem dinâmica -->
+        <ng-container *ngFor="let item of menu">
+
+            <!-- Itens sem submenu -->
+            <mat-nav-list class="mat-elevation-z0" *ngIf="!item.children?.length && isAllowed(item)">
+                <div>
+                    <a mat-list-item routerLinkActive="active" [routerLink]="item.routerLink">{{item.innerHtml}}</a>
+                </div>
+            </mat-nav-list><!-- End Itens sem submenu -->
+
+            <!-- Itens do menu com submenu -->
+            <mat-expansion-panel [expanded]="routerLinkActiveInstance.isActive" class="mat-elevation-z0" *ngIf="item.children?.length && isAllowed(item)">
+                <!-- Título do menu (Apenas expande os itens do submenu) -->
+                <mat-expansion-panel-header routerLinkActive="active" #routerLinkActiveInstance="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
+                    {{item.innerHtml}}
+
+                    <!-- Iteração dos itens do submenu (somente para funcionamento do routerLinkActive no mat-expansion-panel-header) -->
+                    <ng-container *ngFor="let child of item.children">
+                        <a mat-list-item routerLinkActive="active" [routerLink]="child.routerLink" *ngIf="isAllowed(child)" style="display: none;">
+                            {{child.innerHtml}}
+                        </a>
+                    </ng-container><!-- End Iteração dos itens do submenu (somente para funcionamento do routerLinkActive no mat-expansion-panel-header) -->
+                </mat-expansion-panel-header><!-- End Título do menu (Apenas expande os itens do submenu) -->
+
+                <!-- Exibição dos itens do submenu na mat-nav-list -->
+                <mat-nav-list matExpansionPanelContent>
+                    <!-- Iteração *ngFor dos itens do submenu no ng-container -->
+                    <ng-container *ngFor="let child of item.children">
+                        <!-- Exibição do item iterado mais *ngIf para controle de permissão -->
+                        <a mat-list-item routerLinkActive="active" [routerLink]="child.routerLink" *ngIf="isAllowed(child)">
+                            {{child.innerHtml}}
+                        </a><!-- End Exibição do item iterado mais *ngIf para controle de permissão -->
+                    </ng-container><!-- End Iteração *ngFor dos itens do submenu no ng-container -->
+                </mat-nav-list><!-- End Exibição dos itens do submenu na mat-nav-list -->
+            </mat-expansion-panel><!-- End Itens do menu com submenu -->
+
+            <!-- Divider a ser adicionado abaixo de cada item do menu -->
+            <mat-divider></mat-divider><!-- End Divider a ser adicionado abaixo de cada item do menu -->
+        </ng-container><!-- End Iteração nos itens do menu para montagem dinâmica -->
+
+    </mat-sidenav> <!-- End Conteúdo da sidebar -->
+
+    <!-- Conteúdo da tela principal junto com a toolbar -->
+    <mat-sidenav-content>
+        <!-- Toolbar com a primária como default -->
+        <mat-toolbar color="primary" class="mat-elevation-z2">
+            <!-- Única linha da toolbar -->
+            <mat-toolbar-row>
+                <!-- Botão que ficará do lado esquerdo da toolbar -->
+                <button mat-button (click)="sidenavService.toggle()">
+                    <mat-icon>{{sidenavService.isOpen ? "close" : "menu"}}</mat-icon>
+                    {{ title }}
+                </button><!-- End Botão que ficará do lado esquerdo da toolbar -->
+
+                <!-- Espaçamento central -->
+                <span class="fill-space"></span><!-- End Espaçamento central -->
+
+                <!-- Itens que ficarão do lado direito da toolbar -->
+                <div>
+                    <!-- Dropdown com as configurações do usuário -->
+                    <button *ngIf="user" mat-button [matMenuTriggerFor]="profileMenu" #profileMenuTrigger="matMenuTrigger">
+                        {{ user.firstName }}
+                        <mat-icon [@indicatorRotate]="profileMenuTrigger.menuOpen ? 'expanded' : 'collapsed'">expand_more</mat-icon>
+                    </button><!-- End Dropdown com as configurações do usuário -->
+
+                    <!-- Opções do menu -->
+                    <mat-menu class="profile-menu" #profileMenu="matMenu" [overlapTrigger]="false">
+                        <!-- Link para o perfil do usuário -->
+                        <a mat-menu-item [href]="accountUrl">
+                            <mat-icon>account_circle</mat-icon>
+                            <span>Perfil</span>
+                        </a><!-- End Link para o perfil do usuário -->
+                        <!-- Função de logout -->
+                        <a mat-menu-item [href]="logoutUrl" (click)="logoutFunction($event)">
+                            <mat-icon>power_settings_new</mat-icon>
+                            <span>Sair</span>
+                        </a><!-- End Função de logout -->
+                    </mat-menu><!-- End Opções do menu -->
+                </div><!-- End Itens que ficarão do lado direito da toolbar -->
+            </mat-toolbar-row><!-- End Única linha da toolbar -->
+        </mat-toolbar><!-- End Toolbar com a primária como default -->
+
+        <!-- Conteúdo da tela principal -->
+        <router-outlet></router-outlet><!-- End Conteúdo da tela principal -->
+    </mat-sidenav-content><!-- End Conteúdo da tela principal junto com a toolbar -->
+</mat-sidenav-container> <!-- End CC Navbar -->

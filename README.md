@@ -29,7 +29,7 @@ yarn add @govce/cc-navbar
 Adicione no seu arquivo style.scss:
 
 ```scss
-@import "~@casa-civil-do-governo-do-estado-do-ceara/cc-material-themes/cc-default/cc-default.scss";
+@import "~@govce/cc-material-themes/cc-default/cc-default.scss";
 ```
 
 > Renomeie o arquivo style.css para style.scss, depois altere todas as referências do style.css no arquivo angular.json para style.scss.
