@@ -1,0 +1,9 @@
+{
+  "name": "@govce/cc-navbar",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@govce/cc-material-themes": "^0.0.1"
+  }
+}
