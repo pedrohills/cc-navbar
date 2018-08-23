@@ -1,7 +1,7 @@
 # ![Logotipo da Casa Civil](https://raw.githubusercontent.com/casacivilce/cc-navbar/master/common/images/logotipo-horizontal-casa-civil-full-cores-gradiente.png)
 
 # CC-NAVBAR
-Módulo que utiliza uma lógica em conjunto com o [Angular Material](https://material.angular.io/guide/getting-started) para facilitar a configuração dinâmica de um Toolbar e de um Sidenav com objetivo de padronizar nos sistemas organizacionais do Governo do Estado do Ceará.
+Módulo que utiliza uma lógica em conjunto com alguns componentes do [Angular Material](https://material.angular.io/guide/getting-started) para facilitar a configuração dinâmica de um Toolbar e de um Sidenav com objetivo de padronizar os sistemas organizacionais do Governo do Estado do Ceará.
 
 ## Índice
 1. [Ambiente de desenvolvimento](#ambiente-de-desenvolvimento)
@@ -34,7 +34,7 @@ npm i @govce/cc-navbar --save
 
 Instale o pacote @govce/cc-material-themes e adicione no seu arquivo style.scss:
 ```bash
-npm i @govce/cc-material-themes
+npm i @govce/cc-material-themes --save
 ```
 
 ```scss
@@ -74,7 +74,7 @@ menu: MenuItem[] = [
     },
     {
       innerHtml: "Menu2",
-      routerLink: "/routerlinkMenu2", // clique nesta opção será ignorada
+      routerLink: "/routerlinkMenu2", // O clique nesta opção será ignorado
       children: [
         {
           innerHtml: "Submenu 1",
