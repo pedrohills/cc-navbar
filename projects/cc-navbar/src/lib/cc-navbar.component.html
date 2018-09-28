@@ -39,7 +39,7 @@
                     <!-- Iteração *ngFor dos itens do submenu no ng-container -->
                     <ng-container *ngFor="let child of item.children">
                         <!-- Exibição do item iterado mais *ngIf para controle de permissão -->
-                        <a mat-list-item routerLinkActive="active" [routerLink]="child.routerLink" *ngIf="isAllowed(child)">
+                        <a mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="child.routerLink" *ngIf="isAllowed(child)">
                             {{child.innerHtml}}
                         </a><!-- End Exibição do item iterado mais *ngIf para controle de permissão -->
                     </ng-container><!-- End Iteração *ngFor dos itens do submenu no ng-container -->
