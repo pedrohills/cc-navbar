@@ -17,17 +17,21 @@ export class AppComponent {
     },
     {
       innerHtml: "Usuários",
-      routerLink: "/usuarios",
+      routerLink: "",
       children: [
         {
           innerHtml: "Listar Todos",
-          routerLink: "/usuarios/listar-todos",
+          routerLink: "/usuarios",
+          children: []
+        },
+        {
+          innerHtml: "Teste",
+          routerLink: "/usuarios/teste",
           children: []
         },
         {
           innerHtml: "Cadastrar Novo",
           routerLink: "/usuarios/cadastrar-novo",
-          roles: ["ROLE_EDOWEB"],
           children: []
         }
       ]
@@ -38,7 +42,7 @@ export class AppComponent {
       children: [
         {
           innerHtml: "Listar Todos",
-          routerLink: "/arquivos/listar-todos",
+          routerLink: "/arquivos",
           children: []
         },
         {

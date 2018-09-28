@@ -36,6 +36,10 @@ import { RelatoriosComponent } from "./relatorios/relatorios.component";
             component: UsuariosComponent
           },
           {
+            path: "teste",
+            component: UsuariosComponent
+          },
+          {
             path: "cadastrar-novo",
             component: UsuariosComponent
           }
@@ -45,7 +49,7 @@ import { RelatoriosComponent } from "./relatorios/relatorios.component";
         path: "arquivos",
         children: [
           {
-            path: "listar-todos",
+            path: "",
             component: ArquivosComponent
           },
           {
