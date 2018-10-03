@@ -30,6 +30,10 @@ export class CcNavbarComponent implements OnInit {
   @Input()
   user: User = undefined;
 
+  // Bind do modo com que o sidenav será aberto
+  @Input()
+  mode: 'over' | 'push' | 'side' = 'over';
+
   // Opções personalizadas para setar dinâmicamente qualquer
   // configuração deste componente de um vez.
   @Input()

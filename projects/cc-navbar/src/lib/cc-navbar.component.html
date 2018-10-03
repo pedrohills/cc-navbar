@@ -1,10 +1,10 @@
 <!-- CC Navbar -->
 <mat-sidenav-container fullscreen class="cc-navbar">
     <!-- Conteúdo da sidebar -->
-    <mat-sidenav class="mat-elevation-z2" #sidenav mode="side" [autoFocus]="false" [opened]="sidenavService.isOpen">
+    <mat-sidenav class="mat-elevation-z2" #sidenav [autoFocus]="false" (closed)="sidenavService.close()" [opened]="sidenavService.isOpen" (opened)="sidenavService.open()" [mode]="mode">
 
         <!-- Logotipo a ser mostrado com divider abaixo -->
-        <a routerLink="/">
+        <a routerLink="/" (click)="sidenavService.close()">
             <img class="logotipo" [src]="logotipo.src" [alt]="logotipo.alt" mat-card-image>
         </a><!-- End Logotipo a ser mostrado com divider abaixo -->
         <!-- Divider abaixo do logotipo -->
@@ -16,7 +16,7 @@
             <!-- Itens sem submenu -->
             <mat-nav-list class="mat-elevation-z0" *ngIf="!item.children?.length && isAllowed(item)">
                 <div>
-                    <a mat-list-item routerLinkActive="active" [routerLink]="item.routerLink">{{item.innerHtml}}</a>
+                    <a mat-list-item routerLinkActive="active" [routerLink]="item.routerLink" (click)="sidenavService.close()">{{item.innerHtml}}</a>
                 </div>
             </mat-nav-list><!-- End Itens sem submenu -->
 
@@ -39,7 +39,7 @@
                     <!-- Iteração *ngFor dos itens do submenu no ng-container -->
                     <ng-container *ngFor="let child of item.children">
                         <!-- Exibição do item iterado mais *ngIf para controle de permissão -->
-                        <a mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="child.routerLink" *ngIf="isAllowed(child)">
+                        <a mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="child.routerLink" *ngIf="isAllowed(child)" (click)="sidenavService.close()">
                             {{child.innerHtml}}
                         </a><!-- End Exibição do item iterado mais *ngIf para controle de permissão -->
                     </ng-container><!-- End Iteração *ngFor dos itens do submenu no ng-container -->

@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 export class CcNavbarService {
   // Flag que determina se o sidenav está aberto ou fechado.
   // Por default, o sidenav vem aberto.
-  public isOpen: boolean = true;
+  public isOpen: boolean = false;
 
   // Bind do sidenav com o service
   public sideNav: MatSidenav;
@@ -30,7 +30,7 @@ export class CcNavbarService {
       : this.isOpen;
   }
 
-    /**
+  /**
    * @author Pedro Henrique Araújo de Brito - gpedroemail&#64;gmail.com
    * 
    * Alterna o estado do sidenav, em seguida salva seu estado no localStorage.
@@ -39,6 +39,34 @@ export class CcNavbarService {
   public toggle() {
     // Inversão do estado do sidenav
     this.isOpen = !this.isOpen;
+
+    // Salvando a inversão no localStorage..
+    localStorage.setItem("sidenav", JSON.stringify({ isOpen: this.isOpen }));
+  }
+
+  /**
+   * @author Pedro Henrique Araújo de Brito - gpedroemail&#64;gmail.com
+   * 
+   * Altera o estado do sidenav, em seguida salva seu estado no localStorage.
+   *
+   **/
+  public open() {
+    // Inversão do estado do sidenav
+    this.isOpen = true;
+
+    // Salvando a inversão no localStorage..
+    localStorage.setItem("sidenav", JSON.stringify({ isOpen: this.isOpen }));
+  }
+
+  /**
+   * @author Pedro Henrique Araújo de Brito - gpedroemail&#64;gmail.com
+   * 
+   * Altera o estado do sidenav, em seguida salva seu estado no localStorage.
+   *
+   **/
+  public close() {
+    // Inversão do estado do sidenav
+    this.isOpen = false;
 
     // Salvando a inversão no localStorage..
     localStorage.setItem("sidenav", JSON.stringify({ isOpen: this.isOpen }));
