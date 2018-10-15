@@ -1,7 +1,7 @@
 <!-- CC Navbar -->
 <mat-sidenav-container fullscreen class="cc-navbar">
     <!-- Conteúdo da sidebar -->
-    <mat-sidenav class="mat-elevation-z2" #sidenav [autoFocus]="false" (closed)="sidenavService.close()" [opened]="sidenavService.isOpen" (opened)="sidenavService.open()" [mode]="mode">
+    <mat-sidenav #sidenav [autoFocus]="false" (closed)="sidenavService.close()" [opened]="sidenavService.isOpen" (opened)="sidenavService.open()" [mode]="mode">
 
         <!-- Logotipo a ser mostrado com divider abaixo -->
         <a routerLink="/" (click)="sidenavService.close()">
@@ -53,9 +53,9 @@
     </mat-sidenav> <!-- End Conteúdo da sidebar -->
 
     <!-- Conteúdo da tela principal junto com a toolbar -->
-    <mat-sidenav-content>
+    <mat-sidenav-content [ngClass]="{'spaced-sidenav-content': showBreadcrumb}">
         <!-- Toolbar com a primária como default -->
-        <mat-toolbar color="primary" class="mat-elevation-z2">
+        <mat-toolbar class="mat-elevation-z2" color="primary" [ngClass]="{'fixed-header': showBreadcrumb}">
             <!-- Única linha da toolbar -->
             <mat-toolbar-row>
                 <!-- Botão que ficará do lado esquerdo da toolbar -->
@@ -91,6 +91,8 @@
                 </div><!-- End Itens que ficarão do lado direito da toolbar -->
             </mat-toolbar-row><!-- End Única linha da toolbar -->
         </mat-toolbar><!-- End Toolbar com a primária como default -->
+
+        <cc-breadcrumb *ngIf="showBreadcrumb"></cc-breadcrumb>
 
         <!-- Conteúdo da tela principal -->
         <router-outlet></router-outlet><!-- End Conteúdo da tela principal -->

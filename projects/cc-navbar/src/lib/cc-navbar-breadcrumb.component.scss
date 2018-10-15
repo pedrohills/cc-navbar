@@ -1,0 +1,37 @@
+:host {
+  .cc-breadcrumb {
+    min-height: 37px;
+    height: 37px;
+    border-bottom: 2px solid rgba(1, 84, 38, 0.6);
+    position: fixed;
+    top: 64px;
+    z-index: 10;
+
+    .mat-toolbar-row {
+      min-height: 37px;
+      height: 37px;
+    }
+
+    a.mat-button:hover,
+    a.mat-stroked-button:hover {
+      ::ng-deep .mat-button-wrapper {
+        text-decoration: underline;
+      }
+    }
+
+    button.mat-button,
+    button.mat-stroked-button {
+      cursor: default;
+
+      ::ng-deep .mat-button-wrapper {
+        text-decoration: none;
+        opacity: 0.7;
+      }
+    }
+
+    .mat-button ::ng-deep .mat-button-focus-overlay,
+    .mat-icon-button ::ng-deep .mat-button-focus-overlay {
+      background: none;
+    }
+  }
+}

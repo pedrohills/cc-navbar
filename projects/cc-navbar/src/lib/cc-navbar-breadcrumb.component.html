@@ -1,0 +1,41 @@
+<mat-toolbar color="accent" class="cc-breadcrumb mat-elevation-z2">
+    <mat-toolbar-row>
+        <a mat-icon-button routerLink="/">
+            <mat-icon matTooltip="Página Inicial">home</mat-icon>
+        </a>
+        <ng-template [ngIf]="containerClass.length" [ngIfElse]="breadcrumb">
+            <div [ngClass]="containerClass">
+                <ng-container *ngTemplateOutlet="breadcrumb"></ng-container>
+            </div>
+        </ng-template>
+        <ng-template #breadcrumb>
+            <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
+                <span class="breadcrumb-divider">/</span>
+                <a mat-button *ngIf="!last" [routerLink]="hasParams(breadcrumb)" matTooltip="Clique para navegar">
+                    {{breadcrumb.label}}
+                </a>
+                <button mat-button *ngIf="last" disableRipple matTooltip="Você está aqui">
+                    {{breadcrumb.label}}
+                </button>
+            </ng-container>
+        </ng-template>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!--
+    <ng-template [ngIf]="containerClass.length" [ngIfElse]="breadcrumb">
+        <div [ngClass]="containerClass">
+            <ng-container *ngTemplateOutlet="breadcrumb"></ng-container>
+        </div>
+    </ng-template>
+    <ng-template #breadcrumb>
+        <ol [ngClass]="{ 'breadcrumb': allowBootstrap}" class="{{addClass ? '' + addClass : ''}}">
+            <li *ngFor="let breadcrumb of breadcrumbs; let last = last"
+                [ngClass]="{ 'breadcrumb-item': allowBootstrap, 'list': true, 'active': last }">
+                <a *ngIf="!last" [routerLink]="hasParams(breadcrumb)">
+                    {{breadcrumb.label}}
+                </a>
+                <span *ngIf="last">{{ breadcrumb.label }}</span>
+            </li>
+        </ol>
+    </ng-template>
+-->

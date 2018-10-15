@@ -3,7 +3,6 @@
 
 // Encapsulamento
 :host {
-
   // Ajusta o logotipo sem exageros
   img.logotipo.mat-card-image {
     max-width: 66%;
@@ -13,6 +12,17 @@
   // Determina a largura da sidenav (mesma do google analytics)
   mat-sidenav {
     width: 288px;
+  }
+
+  mat-sidenav-content.spaced-sidenav-content {
+    padding-top: 100px;
+
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      z-index: 9;
+      padding-right: 17px;
+    }
   }
 
   // Remove os espaçamentos das listas
@@ -38,7 +48,6 @@
     margin-top: 0;
     margin-bottom: 0;
 
-
     // Ajusta a cor do texto
     &:hover,
     &:focus {
@@ -63,7 +72,6 @@
       }
     }
 
-    
     // Ajusta a lista de dentro do expasion-panel
     mat-nav-list {
       padding-top: 0;
@@ -73,7 +81,6 @@
         font-weight: normal;
       }
     }
-
   }
 
   // Ajusta a cor do texto dos links

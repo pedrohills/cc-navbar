@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
-import { MenuItem } from 'dist/cc-navbar';
-import { User } from 'dist/cc-navbar';
+import { Component } from "@angular/core";
+import { MenuItem } from "dist/cc-navbar";
+import { User } from "dist/cc-navbar";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = 'EDOWEB';
+  title = "EDOWEB";
   user: User = undefined;
   menu: MenuItem[] = [
     {
       innerHtml: "Gráficos",
-      routerLink: "/graficos"
+      routerLink: "/graficos",
+      roles: ["ROLE_EDOWEBBB"]
     },
     {
       innerHtml: "Usuários",
@@ -111,17 +112,39 @@ export class AppComponent {
           },
           authority: "ROLE_SECURITY"
         },
-        // {
-        //   id: 66,
-        //   description: "EDOWEB",
-        //   application: {
-        //     id: 11,
-        //     name: "EDOWeb",
-        //     path: "/edoweb",
-        //     description: null
-        //   },
-        //   authority: "ROLE_EDOWEB"
-        // },
+        {
+          id: 68,
+          description: "EDOWEB_SUPERUSER",
+          application: {
+            id: 11,
+            name: "EDOWeb",
+            path: "/edoweb",
+            description: null
+          },
+          authority: "EDOWEB_SUPERUSER"
+        },
+        {
+          id: 66,
+          description: "ROLE_EDOWEB",
+          application: {
+            id: 11,
+            name: "EDOWeb",
+            path: "/edoweb",
+            description: null
+          },
+          authority: "ROLE_EDOWEB"
+        },
+        {
+          id: 69,
+          description: "EDOWEB",
+          application: {
+            id: 11,
+            name: "EDOWeb",
+            path: "/edoweb",
+            description: null
+          },
+          authority: "EDOWEB"
+        },
         {
           id: 67,
           description: "Mapeamento",

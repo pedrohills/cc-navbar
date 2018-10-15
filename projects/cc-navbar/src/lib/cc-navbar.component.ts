@@ -60,6 +60,10 @@ export class CcNavbarComponent implements OnInit {
   @Input()
   ignoreDefaultLogoutFunction: boolean = false;
 
+  // Opção para mostrar ou não o breadcrumb dinâmico abaixo da toolbar
+  @Input()
+  showBreadcrumb: boolean = true;
+
   // ViewChild utilizado para obter o sidenav da view, utilizar
   // no componente e passar para o service específico do sidenav.
   @ViewChild("sidenav")

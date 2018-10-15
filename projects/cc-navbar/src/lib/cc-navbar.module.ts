@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { CcNavbarComponent } from "./cc-navbar.component";
+import { BrowserModule } from "@angular/platform-browser";
 
 import {
   MatSidenavModule,
@@ -12,11 +13,15 @@ import {
   MatListModule,
   MatMenuModule,
   MatExpansionModule,
-  MatCardModule
+  MatCardModule,
+  MatTooltipModule
 } from "@angular/material";
+import { BreadcrumbsService } from "./services/breadcrumb.service";
+import { CCBreadcrumbComponent } from "./cc-navbar-breadcrumb.component";
 
 @NgModule({
   imports: [
+    BrowserModule,
     CommonModule,
     MatListModule,
     MatIconModule,
@@ -27,9 +32,11 @@ import {
     HttpClientModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatExpansionModule
   ],
-  declarations: [CcNavbarComponent],
+  providers: [BreadcrumbsService],
+  declarations: [CcNavbarComponent, CCBreadcrumbComponent],
   exports: [CcNavbarComponent]
 })
 export class CcNavbarModule {}

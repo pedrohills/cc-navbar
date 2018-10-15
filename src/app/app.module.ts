@@ -22,26 +22,34 @@ import { RelatoriosComponent } from "./relatorios/relatorios.component";
     RouterModule.forRoot([
       {
         path: "graficos",
-        component: GraficosComponent
+        component: GraficosComponent,
+        data: { breadcrumb: 'Gráficos Internos' }
       },
       {
         path: "relatorios",
         component: RelatoriosComponent
       },
       {
-        path: "usuarios",
+        path: "usuarios",        
+        data: { breadcrumb: 'Todos os Usuários' },
         children: [
+          {
+            path: "",
+            component: UsuariosComponent
+          },
           {
             path: "listar-todos",
             component: UsuariosComponent
           },
           {
             path: "teste",
-            component: UsuariosComponent
+            component: UsuariosComponent,
+            data: { breadcrumb: 'Teste' }
           },
           {
             path: "cadastrar-novo",
-            component: UsuariosComponent
+            component: UsuariosComponent,
+            data: { breadcrumb: 'Cadastrar Novo' }
           }
         ]
       },

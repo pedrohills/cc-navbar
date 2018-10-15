@@ -104,6 +104,7 @@ menu: MenuItem[] = [
 |`logoutUrl`|`string`|`"#"`|Url de logout, pode ser utilizada bem com a flag `ignoreDefaultLogoutFunction`.|
 |`logoutFunction`|`Function`|`this.logout`|Função que pode ser personalizada para execução do logout. Por padrão, logout da Casa Civil.|
 |`ignoreDefaultLogoutFunction`|`boolean`|`false`|Utilizado como flag para ignorar a função padrão de logout.|
+|`showBreadcrumb`|`boolean`|`true`|Opção para mostrar ou não o breadcrumb dinâmico abaixo da toolbar|
 
 ## Licença
 GPL-3.0
