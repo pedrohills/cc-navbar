@@ -10,7 +10,7 @@ import { IBreadcrumb } from "./models/breadcrumb";
 import { BreadcrumbsService } from "./services/breadcrumb.service";
 
 @Component({
-  selector: "cc-breadcrumb",
+  selector: "cc-navbar-breadcrumb",
   templateUrl: "./cc-navbar-breadcrumb.component.html",
   styleUrls: ["./cc-navbar-breadcrumb.component.scss"]
 })
