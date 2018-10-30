@@ -51,7 +51,7 @@
     // Ajusta a cor do texto
     &:hover,
     &:focus {
-      color: mat-color($cc-accent);
+      color: mat-color($cc-primary);
     }
 
     // Melhoria visual no menu
@@ -64,10 +64,10 @@
       &:hover,
       &:focus,
       &.active {
-        color: mat-color($cc-accent);
+        color: mat-color($cc-primary);
 
         ::ng-deep .mat-expansion-indicator::after {
-          color: mat-color($cc-accent);
+          color: mat-color($cc-primary);
         }
       }
     }
@@ -89,7 +89,7 @@
       &:hover,
       &:focus,
       &.active {
-        color: mat-color($cc-accent);
+        color: mat-color($cc-primary);
       }
     }
   }
