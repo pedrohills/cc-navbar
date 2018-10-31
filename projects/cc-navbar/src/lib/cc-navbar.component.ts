@@ -64,6 +64,10 @@ export class CcNavbarComponent implements OnInit {
   @Input()
   showBreadcrumb: boolean = true;
 
+  // Opção para configurar a cor do breadcrumb entre primary ou accent
+  @Input()
+  colorBreadcrumb: "primary" | "accent" = "primary";
+
   // ViewChild utilizado para obter o sidenav da view, utilizar
   // no componente e passar para o service específico do sidenav.
   @ViewChild("sidenav")

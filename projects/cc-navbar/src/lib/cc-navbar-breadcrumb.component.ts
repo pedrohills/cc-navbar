@@ -21,6 +21,9 @@ export class CCBreadcrumbComponent implements OnInit {
   public breadcrumbs: IBreadcrumb[];
 
   @Input()
+  public color: "primary" | "accent" = "primary";
+
+  @Input()
   public allowBootstrap: boolean;
 
   @Input()
