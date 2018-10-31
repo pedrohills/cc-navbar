@@ -59,7 +59,7 @@
             <!-- Única linha da toolbar -->
             <mat-toolbar-row>
                 <!-- Botão que ficará do lado esquerdo da toolbar -->
-                <button mat-button (click)="sidenavService.toggle()">
+                <button mat-button color="primary" (click)="sidenavService.toggle()">
                     <mat-icon>{{sidenavService.isOpen ? "close" : "menu"}}</mat-icon>
                     {{ title }}
                 </button><!-- End Botão que ficará do lado esquerdo da toolbar -->
@@ -70,7 +70,7 @@
                 <!-- Itens que ficarão do lado direito da toolbar -->
                 <div>
                     <!-- Dropdown com as configurações do usuário -->
-                    <button *ngIf="user" mat-button [matMenuTriggerFor]="profileMenu" #profileMenuTrigger="matMenuTrigger">
+                    <button *ngIf="user" color="primary" mat-button [matMenuTriggerFor]="profileMenu" #profileMenuTrigger="matMenuTrigger">
                         {{ user.firstName }}
                         <mat-icon [@indicatorRotate]="profileMenuTrigger.menuOpen ? 'expanded' : 'collapsed'">expand_more</mat-icon>
                     </button><!-- End Dropdown com as configurações do usuário -->
