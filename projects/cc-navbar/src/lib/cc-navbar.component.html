@@ -92,7 +92,7 @@
             </mat-toolbar-row><!-- End Única linha da toolbar -->
         </mat-toolbar><!-- End Toolbar com a primária como default -->
 
-        <cc-navbar-breadcrumb *ngIf="showBreadcrumb"></cc-navbar-breadcrumb>
+        <cc-navbar-breadcrumb *ngIf="showBreadcrumb" [color]="colorBreadcrumb"></cc-navbar-breadcrumb>
 
         <!-- Conteúdo da tela principal -->
         <router-outlet></router-outlet><!-- End Conteúdo da tela principal -->
