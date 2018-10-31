@@ -27,7 +27,8 @@ import { RelatoriosComponent } from "./relatorios/relatorios.component";
       },
       {
         path: "relatorios",
-        component: RelatoriosComponent
+        component: RelatoriosComponent,
+        data: { breadcrumb: 'Relatórios' }
       },
       {
         path: "usuarios",        
@@ -55,6 +56,7 @@ import { RelatoriosComponent } from "./relatorios/relatorios.component";
       },
       {
         path: "arquivos",
+        data: { breadcrumb: 'Todos os Arquivos' },
         children: [
           {
             path: "",
@@ -62,7 +64,8 @@ import { RelatoriosComponent } from "./relatorios/relatorios.component";
           },
           {
             path: "fazer-upload",
-            component: ArquivosComponent
+            component: ArquivosComponent,
+            data: { breadcrumb: 'Fazer Upload' }
           }
         ]
       },
