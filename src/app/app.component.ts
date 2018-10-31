@@ -59,7 +59,8 @@ export class AppComponent {
     }
   ];
   options = {
-    accountUrl: "/teste"
+    accountUrl: "/teste",
+    colorBreadcrumb: "accent"
   };
 
   constructor() {
