@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="cc-breadcrumb mat-elevation-z2">
+<mat-toolbar [color]="color" class="cc-breadcrumb mat-elevation-z2">
     <mat-toolbar-row>
         <a mat-icon-button routerLink="/">
             <mat-icon matTooltip="Página Inicial">home</mat-icon>
@@ -21,21 +21,3 @@
         </ng-template>
     </mat-toolbar-row>
 </mat-toolbar>
-<!--
-    <ng-template [ngIf]="containerClass.length" [ngIfElse]="breadcrumb">
-        <div [ngClass]="containerClass">
-            <ng-container *ngTemplateOutlet="breadcrumb"></ng-container>
-        </div>
-    </ng-template>
-    <ng-template #breadcrumb>
-        <ol [ngClass]="{ 'breadcrumb': allowBootstrap}" class="{{addClass ? '' + addClass : ''}}">
-            <li *ngFor="let breadcrumb of breadcrumbs; let last = last"
-                [ngClass]="{ 'breadcrumb-item': allowBootstrap, 'list': true, 'active': last }">
-                <a *ngIf="!last" [routerLink]="hasParams(breadcrumb)">
-                    {{breadcrumb.label}}
-                </a>
-                <span *ngIf="last">{{ breadcrumb.label }}</span>
-            </li>
-        </ol>
-    </ng-template>
--->
