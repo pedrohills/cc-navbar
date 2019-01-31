@@ -1,17 +1,17 @@
-import { User } from "./models/user";
-import { Logotipo } from "./models/logotipo";
-import { MenuItem } from "./models/menu-item";
-import { HttpClient } from "@angular/common/http";
-import { DomSanitizer } from "@angular/platform-browser";
-import { Component, OnInit, Input, ViewChild } from "@angular/core";
-import { logotipo } from "./constants/logotipo.constant";
-import { MatSidenav, matExpansionAnimations } from "@angular/material";
-import { CcNavbarService } from "./cc-navbar.service";
+import { User } from './models/user';
+import { Logotipo } from './models/logotipo';
+import { MenuItem } from './models/menu-item';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { logotipo } from './constants/logotipo.constant';
+import { MatSidenav, matExpansionAnimations } from '@angular/material';
+import { CcNavbarService } from './cc-navbar.service';
 
 @Component({
-  selector: "cc-navbar",
-  templateUrl: "./cc-navbar.component.html",
-  styleUrls: ["./cc-navbar.component.scss"],
+  selector: 'lib-cc-navbar',
+  templateUrl: './cc-navbar.component.html',
+  styleUrls: ['./cc-navbar.component.scss'],
   animations: [
     // Uso da animação de rotação do expansion-panel no menu
     matExpansionAnimations.indicatorRotate
@@ -20,7 +20,7 @@ import { CcNavbarService } from "./cc-navbar.service";
 export class CcNavbarComponent implements OnInit {
   // Título da aplicação que será exibido ao lado do botão do menu...
   @Input()
-  title: string = "CC-NAVBAR";
+  title = 'CC-NAVBAR';
 
   // Estruturação do menu, seus itens e subitens.
   @Input()
@@ -45,11 +45,11 @@ export class CcNavbarComponent implements OnInit {
 
   // Url que leva o usuário até a rota do seu perfil.
   @Input()
-  accountUrl: string = "/accounts";
+  accountUrl = '/accounts';
 
   // Url de logout, pode ser utilizada bem com a flag `ignoreDefaultLogoutFunction`.
   @Input()
-  logoutUrl: string = "#";
+  logoutUrl = '#';
 
   // Função padrão de logout da Casa Civil.
   @Input()
@@ -58,27 +58,25 @@ export class CcNavbarComponent implements OnInit {
   // Input utilizado como flag para ignorar a função
   // padrão de logout.
   @Input()
-  ignoreDefaultLogoutFunction: boolean = false;
+  ignoreDefaultLogoutFunction = false;
 
   // Opção para mostrar ou não o breadcrumb dinâmico abaixo da toolbar
   @Input()
-  showBreadcrumb: boolean = true;
+  showBreadcrumb = true;
 
   // Opção para configurar a cor do breadcrumb entre primary ou accent
   @Input()
-  colorBreadcrumb: "primary" | "accent" = "primary";
+  colorBreadcrumb: 'primary' | 'accent' = 'primary';
 
   // ViewChild utilizado para obter o sidenav da view, utilizar
   // no componente e passar para o service específico do sidenav.
-  @ViewChild("sidenav")
+  @ViewChild('sidenav')
   public sideNav: MatSidenav;
 
   /**
    * @author Pedro Henrique Araújo de Brito - gpedroemail&#64;gmail.com
-   * 
    * Método construtor do cc-navbar, com a injeção das dependências
    * necessárias para o seu funcionamento.
-   * 
    * @param http HttpClient injetado no componente devido ao baixo uso.
    * @param domSanitizer DomSanitizer utilizado na sanitização do logotipo.
    * @param sidenavService Utilizado como público para um melhor uso com a view.
@@ -87,11 +85,10 @@ export class CcNavbarComponent implements OnInit {
     private http: HttpClient,
     private domSanitizer: DomSanitizer,
     public sidenavService: CcNavbarService
-  ) {}
+  ) { }
 
   /**
    * @author Pedro Henrique Araújo de Brito - gpedroemail&#64;gmail.com
-   * 
    * Inicializa o navbar completo, incluindo as
    * configurações iniciais personalizadas.
    **/
@@ -102,20 +99,21 @@ export class CcNavbarComponent implements OnInit {
     );
     // Seta no service o bind do sidenav
     this.sidenavService.sideNav = this.sideNav;
- 
+
     // Verifica se há opções a serem setadas.
-    if(this.options)
+    if (this.options) {
       // Itera cada opção a ser setada.
-      for(let option in this.options)
+      for (const option in this.options) {
         // Verifica se o componente tem a opção a ser setada e depois
         // realiza a atribuição da variável.
-        if(this.hasOwnProperty(option)) this[option] = this.options[option];
+        if (this.hasOwnProperty(option)) { this[option] = this.options[option]; }
+      }
+    }
   }
-  
+
   /**
    * @author Pedro Henrique Araújo de Brito - gpedroemail&#64;gmail.com
-   * 
-   * Função que realiza o logout do usuário na aplicação. 
+   * Função que realiza o logout do usuário na aplicação.
    * É possível setar a flag `ignoreDefaultLogoutFunction`
    * para ignorar o uso dessa função e utilizar o redirecionamento
    * para trabalhar o logout em outro componente ou rota através
@@ -127,7 +125,7 @@ export class CcNavbarComponent implements OnInit {
     if (!this.ignoreDefaultLogoutFunction) {
       // Faz o post para o security da Casa Civil a fim de invalidar
       // o token em uso pelo usuário.
-      this.http.post("/security/logout", null).subscribe(() => {
+      this.http.post('/security/logout', null).subscribe(() => {
         // Realiza um refresh na página.
         window.location.reload();
       });
@@ -144,19 +142,22 @@ export class CcNavbarComponent implements OnInit {
   isAllowed(item: MenuItem): boolean {
     // Verifica se o objeto tem a propriedade roles.
     // Caso negativo, o item fica visivel na sidenav.
-    if (!item.hasOwnProperty("roles")) return true;
+    if (!item.hasOwnProperty('roles')) { return true; }
 
     // Se não há usuário definido, todos os itens do menu
     // devem ficar visíveis.
-    if(!this.user) {
-      return true;
+    if (!this.user) {
+      return false;
     } else {
       // Verifica se há interseção entre as roles
       // do usuário com as roles do item do menu.
-      let result = this.user.roles.filter(role => {
-        return item.roles.indexOf(role) !== -1;
-      });
-  
+      let result = [];
+      if (this.user.hasOwnProperty('roles')) {
+        result = this.user.roles.filter(role => {
+          return item.roles.indexOf(role) !== -1;
+        });
+      }
+
       // Retorna o resultado da interseção.
       return !!result.length;
     }

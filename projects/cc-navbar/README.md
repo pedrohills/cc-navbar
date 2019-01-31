@@ -62,7 +62,7 @@ export class AppModule { }
 ## Utilização
 Adicione no app.component.html uma entrada.
 ```html
-<cc-navbar [menu]="menu"></cc-navbar>
+<lib-cc-navbar [menu]="menu"></lib-cc-navbar>
 ```
 
 Adicione no app.component.ts a configuração da entrada.
