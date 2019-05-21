@@ -23,8 +23,8 @@
     "url": "https://github.com/casacivilce/cc-navbar/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/common": ">=6.0.0 <8.0.0",
+    "@angular/core": ">=6.0.0 <8.0.0",
     "@govce/cc-material-themes": "^0.0.7"
   }
 }
