@@ -153,7 +153,7 @@ export class CcNavbarComponent implements OnInit {
       // do usuário com as roles do item do menu.
       let result = [];
       if (this.user.hasOwnProperty('roles')) {
-        result = this.user.roles.filter(role => {
+        result = Array.from(this.user.roles).filter(role => {
           return item.roles.indexOf(role) !== -1;
         });
       }
